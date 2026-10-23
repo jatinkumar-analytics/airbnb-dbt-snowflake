@@ -1,0 +1,34 @@
+version: 2
+
+models:
+  - name: bronze_booking
+    description: Raw booking data loaded from STAGING source 
+    columns: 
+    - name: BOOKING_ID
+      tests: 
+       - unique
+       - not_null
+
+    - name: LISTING_ID 
+      tests: 
+       - not_null 
+
+  - name: bronze_listings
+    description: Raw listing data loaded from the STAGING source
+    columns: 
+     - name: LISTING_ID
+       tests: 
+        - not_null 
+
+     - name: HOST_ID
+       tests: 
+        - not_null
+
+  - name: bronze_hosts
+    description: Raw hosts data loaded from the STAGING source
+    columns: 
+    - name: HOST_ID
+      tests: 
+      - unique
+      - not_null
+

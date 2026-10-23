@@ -1,6 +1,6 @@
 
 
-{{config(materialized='table')}}
+{{ config(materialized='table') }}
 
 WITH CALCULATED_COLUMN AS (
 SELECT
