@@ -10,12 +10,9 @@ schema='gold')}}
             b.BOOKING_DATE,
             YEAR(b.BOOKING_DATE) AS BOOKING_YEAR,
             MONTH(b.BOOKING_DATE) AS BOOKING_MONTH,
-            b.TOTAL_AMOUNT,
-            b.ADDISSIONAL_FEE AS ADDITIONAL_FEE,
             b.GRAND_TOTAL,
             b.BOOKING_STATUS,
-            b.CREATED_AT AS BOOKING_CREATED_AT
-        "
+            b.CREATED_AT AS BOOKING_CREATED_AT"
     },
 
     {
