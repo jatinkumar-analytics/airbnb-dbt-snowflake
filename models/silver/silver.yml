@@ -1,7 +1,8 @@
 version: 2
 
 models:
-  - name: silver_booking
+  - name: silver_bookings
+  
     description: Cleaned and enriched Airbnb booking records
     columns: 
     - name: BOOKING_ID
