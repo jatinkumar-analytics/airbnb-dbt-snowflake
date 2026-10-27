@@ -1,1 +1,0 @@
-SELECT * from {{ref('bronze_listings')}}
