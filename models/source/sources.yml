@@ -3,6 +3,8 @@ sources:
      database: AIRBNB
      schema: staging
      tables:
-       - name: listings
-       - name: hosts
        - name: bookings
+         loaded_at_field: CREATED_AT
+         freshness: 
+         
+      

@@ -2,6 +2,7 @@
 
 select
     listing_id,
+    host_id,
     property_type,
     room_type,
     city,
