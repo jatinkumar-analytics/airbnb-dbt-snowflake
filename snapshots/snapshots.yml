@@ -6,9 +6,14 @@ snapshots:
     config:
       database: AIRBNB
       schema: GOLD
-      unique_key: LISTING_ID
-      strategy: timestamp
-      updated_at: CREATED_AT
+      unique_key: listing_id
+      strategy: check
+      check_cols:
+        - price_per_night
+        - room_type
+        - property_type
+        - city
+        - data_quality_status
       dbt_valid_to_current: "to_timestamp_ntz('9999-12-31 00:00:00')"
 
   - name: snap_hosts_history
@@ -16,7 +21,10 @@ snapshots:
     config:
       database: AIRBNB
       schema: GOLD
-      unique_key: HOST_ID
-      strategy: timestamp
-      updated_at: CREATED_AT
+      unique_key: host_id
+      strategy: check
+      check_cols:
+        - is_superhost
+        - response_rate
+        - host_segment
       dbt_valid_to_current: "to_timestamp_ntz('9999-12-31 00:00:00')"

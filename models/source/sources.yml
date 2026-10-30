@@ -1,9 +1,40 @@
 sources:
-   - name: staging
-     database: AIRBNB
-     schema: staging
-     tables:
-       - name: bookings
-         loaded_at_field: CREATED_AT
-         freshness: 
+  - name: staging
+    database: "{{ env_var('DBT_DATABASE', 'AIRBNB') }}"
+    schema: staging
+    tables:
+      - name: bookings
+        description: Raw Airbnb bookings as landed from the source extract.
+        columns:
+          - name: booking_id
+            data_tests:
+              - unique
+              - not_null
+          - name: listing_id
+            data_tests:
+              - not_null
+          - name: booking_status
+            data_tests:
+              - accepted_values:
+                  values: ['confirmed', 'cancelled', 'completed', 'pending']
+                  config:
+                    severity: warn
+
+      - name: listings
+        description: Raw Airbnb listings, one row per listing version.
+        columns:
+          - name: listing_id
+            data_tests:
+              - not_null
+          - name: host_id
+            data_tests:
+              - not_null
+
+      - name: hosts
+        description: Raw Airbnb hosts.
+        columns:
+          - name: host_id
+            data_tests:
+              - unique
+              - not_null
          
