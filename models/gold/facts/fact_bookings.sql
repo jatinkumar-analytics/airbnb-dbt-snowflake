@@ -2,8 +2,8 @@
 
 select
     b.booking_id,
-    b.listing_id,
-    dl.host_id,
+    dl.listing_id,
+    dh.host_id,
     d.date_key,
     b.nights_booked,
     b.booking_amount,
@@ -14,8 +14,11 @@ select
 
 from {{ ref('silver_bookings') }} b
 
-left join {{ ref('dim_listings') }} dl 
+left join {{ ref('dim_listings') }} dl
     on b.listing_id = dl.listing_id
+
+left join {{ ref('dim_hosts') }} dh
+    on dl.host_id = dh.host_id
 
 left join {{ ref('dim_date') }} d
     on cast(b.booking_date as date) = d.date_day
